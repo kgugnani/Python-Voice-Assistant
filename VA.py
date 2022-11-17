@@ -111,16 +111,12 @@ if __name__ == '__main__':
             webbrowser.open("google.com")
 
         elif 'open stackoverflow' in query:
-            speak("Here you go to Stack Over flow.Happy coding")
+            speak("Here you go to Stack Over flow. Happy coding")
             webbrowser.open("stackoverflow.com")
 
         elif 'what is the time' in query:
-            strTime = datetime.datetime.now().strftime("% H:% M:% S")
-            speak(f"Sir, the time is {strTime}")
-
-        elif 'open opera' in query:
-            codePath = r"C:\\Users\\gugna\\AppData\\Local\\Programs\\Opera\\launcher.exe"
-            os.startfile(codePath)
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"The time is {strTime}")
 
         elif 'how are you' in query:
             speak("I am fine, Thank you")
@@ -153,8 +149,6 @@ if __name__ == '__main__':
         elif 'joke' in query:
             speak(pyjokes.get_joke())
 
-        elif 'joke' in query:
-            speak(pyjokes.get_joke())
         elif "calculate" in query:
 
             app_id = "Wolframalpha api id"
@@ -167,7 +161,6 @@ if __name__ == '__main__':
             speak("The answer is " + answer)
 
         elif 'search' in query or 'play' in query:
-
             query = query.replace("search", "")
             query = query.replace("play", "")
             webbrowser.open(query)
@@ -176,15 +169,12 @@ if __name__ == '__main__':
             speak("That's for you to find out through the journey of life")
 
         elif 'open file' in query:
-            speak("opening your answer")
+            speak("opening your file")
             power = r"C:\\Users\\gugna\\vig.txt"
-            os.startfile(power)
+            os.startfile(os.path.normpath("C:\\Users\\gugna\\vig.txt"))
 
-        elif 'gay' in query:
-            speak("Vignesh is gay")
-
-        elif 'is love' in query:
-            speak("It is 7th sense that destroy all other senses")
+        elif 'what is love' in query:
+            speak("It is the 7th sense that destroys all the other senses")
 
         elif "who are you" in query:
             speak("I am your virtual assistant created by Kartik")
@@ -192,7 +182,7 @@ if __name__ == '__main__':
         elif "what are you" in query:
             speak("I am your virtual assistant created by Kartik")
 
-        elif 'reason for you' in query:
+        elif 'why do you exist' in query:
             speak("I was created as a project by Kartik so he could learn how to use python speech to text and lots of other libraries ")
 
         # elif 'change background' in query:
@@ -351,12 +341,11 @@ if __name__ == '__main__':
             webbrowser.open("wikipedia.com")
 
         elif "good morning" in query:
-            speak("A warm" + query)
+            speak("A warm" + query + "to you as well")
             speak("How are you")
-            speak(assname)
 
         # most asked question from google Assistant
-        elif "will you be my gf" in query or "will you be my bf" in query:
+        elif "will you be my girlfriend" in query or "will you be my boyfriend" in query:
             speak("I'm not sure about, may be you should give me some time")
 
         elif "how are you" in query:
