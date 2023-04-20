@@ -103,11 +103,11 @@ if __name__ == '__main__':
             speak(results)
 
         elif 'open youtube' in query:
-            speak("Here you go to Youtube\n")
+            speak("Opening youtube\n")
             webbrowser.open("youtube.com")
 
         elif 'open google' in query:
-            speak("Here you go to Google\n")
+            speak("Opening Google\n")
             webbrowser.open("google.com")
 
         elif 'open stackoverflow' in query:
@@ -120,14 +120,14 @@ if __name__ == '__main__':
 
         elif 'how are you' in query:
             speak("I am fine, Thank you")
-            speak("How are you, Sir")
+            speak("How are you, sir")
 
         elif "change my name to" in query:
             query = query.replace("change my name to", "")
             assname = query
 
         elif "change name" in query:
-            speak("What would you like to call me, Sir ")
+            speak("What would you like to call me, sir ")
             assname = takeCommand()
             speak("Thanks for naming me")
 
@@ -141,10 +141,8 @@ if __name__ == '__main__':
             exit()
 
         elif "who made you" in query or "who created you" in query:
-            speak("I have been created by Kartik. He is our god")
+            speak("I have been created by Kartik.")
 
-        elif "god" in query:
-            speak("Kartik is our god")
 
         elif 'joke' in query:
             speak(pyjokes.get_joke())
@@ -167,7 +165,7 @@ if __name__ == '__main__':
 
         elif "who am i" in query:
             speak("That's for you to find out through the journey of life")
-
+        
         elif 'open file' in query:
             speak("opening your file")
             power = r"C:\\Users\\gugna\\vig.txt"
@@ -185,48 +183,22 @@ if __name__ == '__main__':
         elif 'why do you exist' in query:
             speak("I was created as a project by Kartik so he could learn how to use python speech to text and lots of other libraries ")
 
-        # elif 'change background' in query:
-            # ctypes.windll.user32.SystemParametersInfoW(20,
-            # 0,
-            #"Location of wallpaper",
-            # 0)
-            #speak("Background changed successfully")
-
-        elif 'news' in query:
-
-            try:
-                jsonObj = urlopen(
-                    '''https://newsapi.org / v1 / articles?source = the-times-of-india&sortBy = top&apiKey =\\times of India Api key\\''')
-                data = json.load(jsonObj)
-                i = 1
-
-                speak('here are some top news from the times of india')
-                print('''=============== TIMES OF INDIA ============''' + '\n')
-
-                for item in data['articles']:
-
-                    print(str(i) + '. ' + item['title'] + '\n')
-                    print(item['description'] + '\n')
-                    speak(str(i) + '. ' + item['title'] + '\n')
-                    i += 1
-            except Exception as e:
-
-                print(str(e))
-
-        elif 'lock window' in query:
+        elif 'lock my device' in query:
             speak("locking the device")
             ctypes.windll.user32.LockWorkStation()
 
-        elif 'shutdown system' in query:
-            speak("Hold On a Sec ! Your system is on its way to shut down")
-            subprocess.call('shutdown / p /f')
-
+        elif 'turn off device' in query:
+            confirm = takeCommand()
+            if 'yes' in confirm:
+                speak("Your system is shutting down")
+                subprocess.call('shutdown / p /f')
+            
         elif 'empty recycle bin' in query:
             winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
-            speak("Recycle Bin Recycled")
+            speak("Recycle Bin emptied")
 
         elif "don't listen" in query or "stop listening" in query:
-            speak("for how much time you want to stop jarvis from listening commands")
+            speak("How long do you want me to ignore you?")
             a = int(takeCommand())
             time.sleep(a)
             print(a)
@@ -245,28 +217,16 @@ if __name__ == '__main__':
         elif "restart" in query:
             subprocess.call(["shutdown", "/r"])
 
-        elif "hibernate" in query or "sleep" in query:
-            speak("Hibernating")
-            subprocess.call("shutdown / h")
-
         elif "log off" in query or "sign out" in query:
-            speak("Make sure all the application are closed before sign-out")
+            speak("Make sure all applications are closed before signing out")
             time.sleep(5)
             subprocess.call(["shutdown", "/l"])
 
         elif "write a note" in query:
-            speak("What should i write, sir")
+            speak("What should I write?")
             note = takeCommand()
             file = open('jarvis.txt', 'w')
-            speak("Sir, Should i include date and time")
-            snfm = takeCommand()
-            if 'yes' in snfm or 'sure' in snfm:
-                strTime = datetime.datetime.now().strftime("% H:% M:% S")
-                file.write(strTime)
-                file.write(" :- ")
-                file.write(note)
-            else:
-                file.write(note)
+            file.write(note)
 
         elif "show note" in query:
             speak("Showing Notes")
@@ -274,22 +234,6 @@ if __name__ == '__main__':
             print(file.read())
             speak(file.read(6))
 
-        elif "update assistant" in query:
-            speak(
-                "After downloading file please replace this file with the downloaded one")
-            url = '# url after uploading file'
-            r = requests.get(url, stream=True)
-
-            with open("Voice.py", "wb") as Pypdf:
-
-                total_length = int(r.headers.get('content-length'))
-
-                for ch in progress.bar(r.iter_content(chunk_size=2391975),
-                                       expected_size=(total_length / 1024) + 1):
-                    if ch:
-                        Pypdf.write(ch)
-
-        # NPPR9-FWDCX-D2C8J-H872K-2YT43
         elif "jarvis" in query:
 
             greetMe()
@@ -346,18 +290,15 @@ if __name__ == '__main__':
 
         # most asked question from google Assistant
         elif "will you be my girlfriend" in query or "will you be my boyfriend" in query:
-            speak("I'm not sure about, may be you should give me some time")
+            speak("I'm not sure about that, maybe you should give me some time")
 
         elif "how are you" in query:
-            speak("I'm fine, glad you me that")
+            speak("I'm fine, no one ever asks me that")
 
         elif "i love you" in query:
-            speak("It's hard to understand")
+            speak("As an Intelligent Assistant Model, emotions and feelings such as love do not occur to me")
 
         elif "what is" in query or "who is" in query:
-
-            # Use the same API key
-            # that we have generated earlier
             client = wolframalpha.Client("API_ID")
             res = client.query(query)
 
